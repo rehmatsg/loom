@@ -4,7 +4,7 @@ Tests for the SecretsManager class and related functionality.
 import pytest
 import keyring
 from unittest.mock import patch, MagicMock
-from loom.utils.secrets import SecretsManager, save_secret, get_secret, delete_secret, list_secrets
+from loom.core.secrets import SecretsManager, save_secret, get_secret, delete_secret, list_secrets
 import typer
 
 
@@ -114,7 +114,7 @@ class TestCLIFunctions:
     self.test_value = "test_value"
     self.test_service = "test_service"
 
-  @patch('loom.utils.secrets.SecretsManager')
+  @patch('loom.core.secrets.SecretsManager')
   def test_save_secret_success(self, mock_manager_class):
     """Test successful secret saving via CLI."""
     mock_manager = MagicMock()
@@ -128,7 +128,7 @@ class TestCLIFunctions:
     mock_manager.save_secret.assert_called_once_with(
         self.test_key, self.test_value)
 
-  @patch('loom.utils.secrets.SecretsManager')
+  @patch('loom.core.secrets.SecretsManager')
   def test_save_secret_failure(self, mock_manager_class):
     """Test secret saving failure via CLI."""
     mock_manager = MagicMock()
@@ -138,7 +138,7 @@ class TestCLIFunctions:
     with pytest.raises(typer.Exit):
       save_secret(self.test_key, self.test_value, self.test_service)
 
-  @patch('loom.utils.secrets.SecretsManager')
+  @patch('loom.core.secrets.SecretsManager')
   def test_get_secret_success(self, mock_manager_class):
     """Test successful secret retrieval via CLI."""
     mock_manager = MagicMock()
@@ -151,7 +151,7 @@ class TestCLIFunctions:
     mock_manager_class.assert_called_once_with(self.test_service)
     mock_manager.get_secret.assert_called_once_with(self.test_key)
 
-  @patch('loom.utils.secrets.SecretsManager')
+  @patch('loom.core.secrets.SecretsManager')
   def test_get_secret_not_found(self, mock_manager_class):
     """Test secret retrieval when key doesn't exist via CLI."""
     mock_manager = MagicMock()
@@ -161,7 +161,7 @@ class TestCLIFunctions:
     with pytest.raises(typer.Exit):
       get_secret(self.test_key, self.test_service, False)
 
-  @patch('loom.utils.secrets.SecretsManager')
+  @patch('loom.core.secrets.SecretsManager')
   def test_get_secret_with_key_shown(self, mock_manager_class):
     """Test secret retrieval with key shown via CLI."""
     mock_manager = MagicMock()
@@ -174,7 +174,7 @@ class TestCLIFunctions:
     mock_manager_class.assert_called_once_with(self.test_service)
     mock_manager.get_secret.assert_called_once_with(self.test_key)
 
-  @patch('loom.utils.secrets.SecretsManager')
+  @patch('loom.core.secrets.SecretsManager')
   def test_delete_secret_success(self, mock_manager_class):
     """Test successful secret deletion via CLI."""
     mock_manager = MagicMock()
@@ -187,7 +187,7 @@ class TestCLIFunctions:
     mock_manager_class.assert_called_once_with(self.test_service)
     mock_manager.delete_secret.assert_called_once_with(self.test_key)
 
-  @patch('loom.utils.secrets.SecretsManager')
+  @patch('loom.core.secrets.SecretsManager')
   def test_delete_secret_failure(self, mock_manager_class):
     """Test secret deletion failure via CLI."""
     mock_manager = MagicMock()
@@ -197,7 +197,7 @@ class TestCLIFunctions:
     with pytest.raises(typer.Exit):
       delete_secret(self.test_key, self.test_service)
 
-  @patch('loom.utils.secrets.SecretsManager')
+  @patch('loom.core.secrets.SecretsManager')
   def test_list_secrets(self, mock_manager_class):
     """Test list secrets via CLI."""
     mock_manager = MagicMock()

@@ -767,6 +767,7 @@ dependencies = [
     { name = "requests" },
     { name = "rich" },
     { name = "typer" },
+    { name = "unqlite" },
     { name = "uvicorn" },
 ]
 
@@ -788,6 +789,7 @@ requires-dist = [
     { name = "requests", specifier = ">=2.32.5" },
     { name = "rich", specifier = ">=13.0.0" },
     { name = "typer", specifier = "==0.20.0" },
+    { name = "unqlite", specifier = ">=0.9.9" },
     { name = "uvicorn", specifier = ">=0.38.0" },
 ]
 provides-extras = ["test"]
@@ -1798,6 +1800,12 @@ sdist = { url = "https://files.pythonhosted.org/packages/55/e3/70399cb7dd41c10ac
 wheels = [
     { url = "https://files.pythonhosted.org/packages/dc/9b/47798a6c91d8bdb567fe2698fe81e0c6b7cb7ef4d13da4114b41d239f65d/typing_inspection-0.4.2-py3-none-any.whl", hash = "sha256:4ed1cacbdc298c220f1bd249ed5287caa16f34d44ef4e9c3d0cbad5b521545e7", size = 14611, upload-time = "2025-10-01T02:14:40.154Z" },
 ]
+
+[[package]]
+name = "unqlite"
+version = "0.9.9"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/c6/8a/d9973332a9fc7dd2385edf48457108e3f854f014e7c026780e26d67ab0d0/unqlite-0.9.9.tar.gz", hash = "sha256:63a79975d67e3896af269c1885c2cc363fb646ff26e58541365fb5fb9e645691", size = 633945, upload-time = "2025-07-01T20:51:57.509Z" }
 
 [[package]]
 name = "urllib3"
